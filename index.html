@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les 10 Meilleurs Restaurants du 16e Arrondissement de Paris</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap');
+        
+        :root {
+            --primary-color: #3a3a3a;
+            --accent-color: #c9a959;
+            --bg-color: #f8f8f8;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --light-text: #777777;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            background-image: url('https://via.placeholder.com/1200x400');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            position: relative;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-weight: 300;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .restaurant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .restaurant-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .restaurant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .restaurant-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .restaurant-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .restaurant-card:hover .restaurant-img img {
+            transform: scale(1.05);
+        }
+        
+        .restaurant-info {
+            padding: 1.5rem;
+        }
+        
+        .restaurant-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .restaurant-cuisine {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .restaurant-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .stars {
+            color: #f8ce0b;
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+        
+        .review-count {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .restaurant-comment {
+            color: var(--text-color);
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .restaurant-address {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .restaurant-contact {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+        
+        .restaurant-phone {
+            color: var(--primary-color);
+        }
+        
+        .restaurant-website {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .restaurant-website:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .footer-note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .restaurant-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Les 10 Meilleurs Restaurants du 16e Arrondissement</h1>
+            <p class="subtitle">Découvrez notre sélection des adresses gastronomiques incontournables dans l'un des quartiers les plus élégants de Paris</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="restaurant-grid">
+            <!-- Restaurant 1 -->
+            <div class="restaurant-card">
+                <div class="restaurant-img">
+                    <img src="https://via.placeholder.com/400x200" alt="La Coïncidence">
+                </div>
+                <div class="restaurant-info">
+                    <h2 class="restaurant-name">La Coïncidence</h2>
+                    <p class="restaurant-cuisine">Cuisine Française Moderne</p>
+                    <div class="restaurant-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="review-count">(578 avis)</span>
+                    </div>
+                    <p class="restaurant-comment">"Une véritable pépite gastronomique nichée au cœur du 16e. Le chef propose une cuisine créative qui respecte les produits de saison. Service attentionné et carte des vins remarquable."</p>
+                    <p class="restaurant-address">14 Rue Mesnil, 75016 Paris</p>
+                    <div class="restaurant-contact">
+                        <span class="restaurant-phone">01 47 04 96 81</span>
+                        <a href="#" class="restaurant-website">Voir le site</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Restaurant 2 -->
+            <div class="restaurant-card">
+                <div class="restaurant-img">
+                    <img src="https://via.placeholder.com/400x200" alt="La Place Longchamp">
+                </div>
+                <div class="restaurant-info">
+                    <h2 class="restaurant-name">La Place Longchamp</h2>
+                    <p class="restaurant-cuisine">Bistrot Français</p>
+                    <div class="restaurant-rating">
+                        <div class="stars">★★★★☆</div>
+                        <span class="review-count">(423 avis)</span>
+                    </div>
+                    <p class="restaurant-comment">"Un bistrot parisien traditionnel avec une ambiance chaleureuse. Les plats sont généreux et savoureux, notamment le risotto aux cèpes et le filet de bœuf. Un excellent rapport qualité-prix."</p>
+                    <p class="restaurant-address">5 Place du Maréchal de Lattre de Tassigny, 75016 Paris</p>
+                    <div class="restaurant-contact">
+                        <span class="restaurant-phone">01 45 25 36 91</span>
+                        <a href="#" class="restaurant-website">Voir le site</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Restaurant 3 -->
+            <div class="restaurant-card">
+                <div class="restaurant-img">
+                    <img src="https://via.placeholder.com/400x200" alt="Firmine">
+                </div>
+                <div class="restaurant-info">
+                    <h2 class="restaurant-name">Firmine</h2>
+                    <p class="restaurant-cuisine">Cuisine Méditerranéenne</p>
+                    <div class="restaurant-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="review-count">(347 avis)</span>
+                    </div>
+                    <p class="restaurant-comment">"Une adresse confidentielle qui mérite d'être connue. Les saveurs méditerranéennes sont sublimées dans chaque assiette. Le cadre élégant et la terrasse ombragée en font un lieu parfait pour déjeuner en été."</p>
+                    <p class="restaurant-address">123 Avenue Victor Hugo, 75016 Paris</p>
+                    <div class="restaurant-contact">
+                        <span class="restaurant-phone">01 53 65 25 22</span>
+                        <a href="#" class="restaurant-website">Voir le site</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Restaurant 4 -->
+            <div class="restaurant-card">
+                <div class="restaurant-img">
+                    <img src="https://via.placeholder.com/400x200" alt="Le Bistrot Kléber">
+                </div>
+                <div class="restaurant-info">
+                    <h2 class="restaurant-name">Le Bistrot Kléber</h2>
+                    <p class="restaurant-cuisine">Gastronomie Française</p>
+                    <div class="restaurant-rating">
+                        <div class="stars">★★★★☆</div>
+                        <span class="review-count">(512 avis)</span>
+                    </div>
+                    <p class="restaurant-comment">"Situé à deux pas de la Place Victor Hugo, ce bistrot au décor années 1900 propose une cuisine authentique française. Le chef y décline avec passion des recettes traditionnelles revisitées. Service impeccable."</p>
+                    <p class="restaurant-address">107 Avenue Kléber, 75016 Paris</p>
+                    <div class="restaurant-contact">
+                        <span class="restaurant-phone">01 47 27 88 88</span>
+                        <a href="#" class="restaurant-website">Voir le site</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Restaurant 5 -->
+            <div class="restaurant-card">
+                <div class="restaurant-img">
+                    <img src="https://via.placeholder.com/400x200" alt="Le Bois">
+                </div>
+                <div class="restaurant-info">
+                    <h2 class="restaurant-name">Le Bois</h2>
+                    <p class="restaurant-cuisine">Cuisine Créative</p>
+                    <div class="restaurant-rating">
+                        <div class="stars">★★★★★</div>
+                        <span class="review-count">(289 avis)</span>
+                    </div>
+                    <p class="restaurant-comment">"Un havre de paix en bordure du Bois de Boulogne. La carte change régulièrement au gré des saisons. Les desserts sont particulièrement remarquables. Une valeur sûre pour un dîner romantique."</p>
+                    <p class="restaurant-address">6 Route de la Muette à Neuilly, 75016 Paris</p>
+                    <div class="restaurant-contact">
+                        <span class="restaurant-phone">01 45 24 63 65</span>
+                        <a href="#" class="restaurant-website">Voir le site</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Restaurants 6 à 10 seront ajoutés dans un prochain commit -->
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Explorez le 16e Arrondissement</h3>
+            <p>Entre patrimoine architectural, espaces verts et gastronomie, le 16e arrondissement de Paris vous réserve bien des surprises.</p>
+            <p class="footer-note">Sélection basée sur les avis de Google Maps - Avril 2025</p>
+        </div>
+    </footer>
+</body>
+</html>
